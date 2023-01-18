@@ -305,6 +305,24 @@ VALUES (
         'https://images.unsplash.com/photo-1651428106138-c723bbd7f1b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuc2lvbiUyMG9uJTIwbGFrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
     );
 
+INSERT INTO
+    houses (
+        bedroom,
+        bathroom,
+        level,
+        price,
+        description,
+        `imgUrl`
+    )
+VALUES (
+        6,
+        14,
+        3,
+        2800000,
+        'Beautiful victorian home on acreage.',
+        'https://images.unsplash.com/photo-1452626212852-811d58933cae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dWx0cmElMjBtb2Rlcm4lMjBob3VzZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
+    );
+
 SELECT LAST_INSERT_ID();
 
 UPDATE houses
@@ -319,4 +337,47 @@ WHERE id = 2;
 
 DELETE from houses WHERE id = 4;
 
-DELETE from cars WHERE id = 120;
+-- SECTION Jobs
+
+CREATE TABLE
+    jobs(
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        title VARCHAR(30) NOT NULL COMMENT 'job title',
+        company VARCHAR(20) NOT NULL,
+        description TEXT,
+        salary INT NOT NULL,
+        hours INT NOT NULL,
+        remote BOOLEAN NOT NULL DEFAULT false,
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
+        updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update'
+    ) default charset utf8mb4 COMMENT "for the emojis";
+
+INSERT INTO
+    jobs (
+        title,
+        company,
+        description,
+        salary,
+        hours,
+        remote
+    )
+VALUES (
+        'Book Reviewer',
+        'Barnes and Noble',
+        'Read all the things, give all the opinions',
+        100000,
+        48,
+        true
+    );
+
+UPDATE jobs
+Set
+    title = 'Book Reviewer',
+    company = 'Barnes and Noble',
+    description = 'Read all the things, give all the opinions.',
+    salary = 50000,
+    hours = 40,
+    remote = true
+WHERE id = 5;
+
+DELETE from jobs WHERE id = 9;

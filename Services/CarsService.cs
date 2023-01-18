@@ -9,16 +9,16 @@ public class CarsService
     _repo = repo;
   }
 
-  internal Car Create(Car carData)
-  {
-    Car car = _repo.Create(carData);
-    return car;
-  }
-
   internal List<Car> Get()
   {
     List<Car> cars = _repo.Get();
     return cars;
+  }
+
+  internal Car Create(Car carData)
+  {
+    Car car = _repo.Create(carData);
+    return car;
   }
 
   internal Car Get(int id)
