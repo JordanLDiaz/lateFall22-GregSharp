@@ -380,4 +380,4 @@ Set
     remote = true
 WHERE id = 5;
 
-DELETE from jobs WHERE id = 9;
+DELETE from jobs WHERE id = 8;

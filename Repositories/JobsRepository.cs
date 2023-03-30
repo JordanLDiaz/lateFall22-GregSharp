@@ -67,7 +67,7 @@ public class JobsRepository
   {
     string sql = @"
     DELETE FROM jobs
-    WHERE id @id;
+    WHERE id = @id;
     ";
     int rows = _db.Execute(sql, new { id });
     return rows > 0;
