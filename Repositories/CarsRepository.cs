@@ -14,7 +14,7 @@ public class CarsRepository
     string sql = @"
     SELECT
     *
-    FROM cars;
+    FROM JDcars;
     ";
     List<Car> cars = _db.Query<Car>(sql).ToList();
     return cars;
@@ -23,7 +23,7 @@ public class CarsRepository
   internal Car Create(Car carData)
   {
     string sql = @"
-    INSERT INTO cars
+    INSERT INTO JDcars
     (make, model, year, price, imgUrl, description, color)
     VALUES
     (@make, @model, @year, @price, @imgUrl, @description, @color);
@@ -40,7 +40,7 @@ public class CarsRepository
     string sql = @"
     SELECT
     *
-    FROM cars
+    FROM JDcars
     WHERE id = @id;
     ";
     Car car = _db.Query<Car>(sql, new { id }).FirstOrDefault();
@@ -50,7 +50,7 @@ public class CarsRepository
   internal bool Remove(int id)
   {
     string sql = @"
-    DELETE FROM cars
+    DELETE FROM JDcars
     WHERE id = @id;
     ";
     int rows = _db.Execute(sql, new { id });
@@ -61,7 +61,7 @@ public class CarsRepository
   internal bool Update(Car original)
   {
     string sql = @"
-    UPDATE cars
+    UPDATE JDcars
         SET
         make = @make,
         model = @model,

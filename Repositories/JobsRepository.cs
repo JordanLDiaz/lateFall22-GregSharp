@@ -13,7 +13,7 @@ public class JobsRepository
     string sql = @"
     SELECT
     *
-    FROM jobs;
+    FROM JDjobs;
     ";
     List<Job> jobs = _db.Query<Job>(sql).ToList();
     return jobs;
@@ -22,7 +22,7 @@ public class JobsRepository
   internal Job Create(Job jobData)
   {
     string sql = @"
-    INSERT INTO jobs
+    INSERT INTO JDjobs
     (title, company, description, salary, hours, remote)
     VALUES
     (@title, @company, @description, @salary, @hours, @remote);
@@ -39,7 +39,7 @@ public class JobsRepository
     string sql = @"
     SELECT
     *
-    FROM jobs
+    FROM JDjobs
     WHERE id = @id;
     ";
     Job job = _db.Query<Job>(sql, new { id }).FirstOrDefault();
@@ -49,7 +49,7 @@ public class JobsRepository
   internal bool Update(Job original)
   {
     string sql = @"
-    UPDATE jobs
+    UPDATE JDjobs
         SET
         title = @title,
         company = @company,
@@ -66,7 +66,7 @@ public class JobsRepository
   internal bool Remove(int id)
   {
     string sql = @"
-    DELETE FROM jobs
+    DELETE FROM JDjobs
     WHERE id = @id;
     ";
     int rows = _db.Execute(sql, new { id });

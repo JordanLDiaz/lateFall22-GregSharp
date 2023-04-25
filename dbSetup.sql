@@ -1,5 +1,5 @@
 CREATE TABLE
-    IF NOT EXISTS accounts(
+    IF NOT EXISTS JDaccounts(
         id VARCHAR(255) NOT NULL primary key COMMENT 'primary key',
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
@@ -125,7 +125,7 @@ SELECT * FROM syrups WHERE viscosity < 8 ORDER BY viscosity;
 -- SECTION CARS
 
 CREATE TABLE
-    cars(
+    IF NOT EXISTS JDcars(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         make VARCHAR(255) NOT NULL,
         model VARCHAR(255) NOT NULL,
@@ -138,10 +138,10 @@ CREATE TABLE
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update'
     ) default charset utf8mb4 COMMENT "for the emojis";
 
-DROP TABLE cars;
+DROP TABLE JDcars;
 
 INSERT INTO
-    cars (
+    JDcars (
         make,
         model,
         year,
@@ -161,7 +161,7 @@ VALUES (
     );
 
 INSERT INTO
-    cars (
+    JDcars (
         make,
         model,
         year,
@@ -181,7 +181,7 @@ VALUES (
     );
 
 INSERT INTO
-    cars (
+    JDcars (
         make,
         model,
         year,
@@ -201,7 +201,7 @@ VALUES (
     );
 
 INSERT INTO
-    cars (
+    JDcars (
         make,
         model,
         year,
@@ -224,7 +224,7 @@ SELECT LAST_INSERT_ID();
 
 -- PUT or update car
 
-UPDATE cars
+UPDATE JDcars
 Set
     make = '🚤',
     model = 'speedboat',
@@ -234,12 +234,12 @@ Set
     imgUrl = "https://sportshub.cbsistatic.com/i/2021/03/17/9ec01251-4341-459a-9bc2-c222ea9f7418/spongebob-squarepants-boulder-1177707.jpg"
 WHERE id = 7;
 
-DELETE from cars WHERE id = 120;
+DELETE from JDcars WHERE id = 120;
 
 -- Section Houses
 
 CREATE TABLE
-    houses(
+    JDhouses(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         bedroom INT NOT NULL,
         bathroom INT NOT NULL,
@@ -252,7 +252,7 @@ CREATE TABLE
     ) DEFAULT charset utf8mb4 COMMENT "for the emojis";
 
 INSERT INTO
-    houses (
+    JDhouses (
         bedroom,
         bathroom,
         level,
@@ -270,7 +270,7 @@ VALUES (
     );
 
 INSERT INTO
-    houses (
+    JDhouses (
         bedroom,
         bathroom,
         level,
@@ -288,7 +288,7 @@ VALUES (
     );
 
 INSERT INTO
-    houses (
+    JDhouses (
         bedroom,
         bathroom,
         level,
@@ -306,7 +306,7 @@ VALUES (
     );
 
 INSERT INTO
-    houses (
+    JDhouses (
         bedroom,
         bathroom,
         level,
@@ -325,7 +325,7 @@ VALUES (
 
 SELECT LAST_INSERT_ID();
 
-UPDATE houses
+UPDATE JDhouses
 Set
     bedroom = 2,
     bathroom = 1,
@@ -335,12 +335,12 @@ Set
     imgUrl = 'https://images.unsplash.com/photo-1605644641464-80618f2d8ef6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y290dGFnZSUyMGluJTIwd29vZHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
 WHERE id = 2;
 
-DELETE from houses WHERE id = 4;
+DELETE from JDhouses WHERE id = 4;
 
 -- SECTION Jobs
 
 CREATE TABLE
-    jobs(
+    JDjobs(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         title VARCHAR(30) NOT NULL COMMENT 'job title',
         company VARCHAR(20) NOT NULL,
@@ -353,7 +353,7 @@ CREATE TABLE
     ) default charset utf8mb4 COMMENT "for the emojis";
 
 INSERT INTO
-    jobs (
+    JDjobs (
         title,
         company,
         description,
@@ -370,7 +370,7 @@ VALUES (
         true
     );
 
-UPDATE jobs
+UPDATE JDjobs
 Set
     title = 'Book Reviewer',
     company = 'Barnes and Noble',
@@ -380,4 +380,4 @@ Set
     remote = true
 WHERE id = 5;
 
-DELETE from jobs WHERE id = 8;
+DELETE from JDjobs WHERE id = 8;

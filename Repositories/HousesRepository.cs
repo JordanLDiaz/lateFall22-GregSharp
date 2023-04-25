@@ -14,7 +14,7 @@ public class HousesRepository
     string sql = @"
   SELECT
   *
-  FROM houses;
+  FROM JDhouses;
   ";
     List<House> houses = _db.Query<House>(sql).ToList();
     return houses;
@@ -23,7 +23,7 @@ public class HousesRepository
   internal House Create(House houseData)
   {
     string sql = @"
-    INSERT INTO houses
+    INSERT INTO JDhouses
     (bedroom, bathroom, level, price, description, imgUrl)
     Values
     (@bedroom, @bathroom, @level, @price, @description, @imgUrl);
@@ -40,7 +40,7 @@ public class HousesRepository
     string sql = @"
    SELECT
    *
-   FROM houses
+   FROM JDhouses
    WHERE id = @id;
    ";
     House house = _db.Query<House>(sql, new { id }).FirstOrDefault();
@@ -50,7 +50,7 @@ public class HousesRepository
   internal bool Update(House original)
   {
     string sql = @"
-    UPDATE houses
+    UPDATE JDhouses
     SET
         bedroom = @bedroom,
         bathroom = @bathroom,
@@ -67,7 +67,7 @@ public class HousesRepository
   internal bool Remove(int id)
   {
     string sql = @"
-    DELETE FROM houses
+    DELETE FROM JDhouses
     WHERE id = @id;
     ";
     int rows = _db.Execute(sql, new { id });
