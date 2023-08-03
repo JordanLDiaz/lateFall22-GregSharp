@@ -1,3 +1,5 @@
+-- Active: 1680282356336@@54.187.169.182@3306@classroom_demos
+
 CREATE TABLE
     IF NOT EXISTS JDaccounts(
         id VARCHAR(255) NOT NULL primary key COMMENT 'primary key',
@@ -121,6 +123,42 @@ SELECT id, id, name AS syrup_name, viscosity from syrups;
 -- ORDER BY sorts the table by that field
 
 SELECT * FROM syrups WHERE viscosity < 8 ORDER BY viscosity;
+
+-- SECTION Penguins
+
+CREATE TABLE
+    JDpenguins(
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        name TEXT NOT NULL,
+        age INT DEFAULT 1,
+        species TEXT,
+        wearingTuxedo BOOLEAN DEFAULT true
+    );
+
+DROP TABLE `JDpenguins`;
+
+INSERT INTO
+    JDpenguins (
+        name,
+        age,
+        species,
+        wearingTuxedo
+    )
+VALUES ("Penny", 2, "Macaroni", false);
+
+INSERT INTO
+    JDpenguins (
+        name,
+        age,
+        species,
+        wearingTuxedo
+    )
+VALUES (
+        "Rocky",
+        4,
+        "Southern RockHopper",
+        true
+    );
 
 -- SECTION CARS
 
@@ -381,3 +419,66 @@ Set
 WHERE id = 5;
 
 DELETE from JDjobs WHERE id = 8;
+
+-- Section Pets
+
+CREATE TABLE
+    IF NOT EXISTS JDpets(
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(30) NOT NULL COMMENT "Pet's name",
+        species VARCHAR(30) NOT NULL,
+        breed VARCHAR(30) NOT NULL,
+        description TEXT,
+        price INT NOT NULL,
+        age INT NOT NULL,
+        isCute BOOLEAN NOT NULL DEFAULT true,
+        imgUrl VARCHAR(255),
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
+        updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update'
+    ) default charset utf8mb4;
+
+DROP TABLE JDpets;
+
+INSERT INTO
+    JDpets(
+        name,
+        species,
+        breed,
+        description,
+        price,
+        age,
+        isCute,
+        imgUrl
+    )
+VALUES (
+        'Sir Ruffigan',
+        'dog',
+        'Pug',
+        'The bestest boy',
+        50,
+        3,
+        true,
+        'https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60'
+    );
+
+INSERT INTO
+    JDpets(
+        name,
+        species,
+        breed,
+        description,
+        price,
+        age,
+        isCute,
+        imgUrl
+    )
+VALUES (
+        'Leonard',
+        'iguana',
+        'idk',
+        'The bestest boy in all the land.',
+        200,
+        5,
+        true,
+        'https://images.unsplash.com/photo-1428542244207-0aaec316e609?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+    );
